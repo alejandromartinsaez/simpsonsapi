@@ -21,7 +21,7 @@ class CharactersViewModel(
         viewModelScope.launch {
             _state.value = UiState.Loading
             when (val result = getCharactersUseCase(page)) {
-                is DomainResult.Success<*> -> _state.value = UiState.Success(result.data as List<*>)
+                is DomainResult.Success<*> -> _state.value = UiState.Success(result.data)
                 is DomainResult.ApiError -> _state.value = UiState.Error("Error ${result.code}")
                 is DomainResult.NetworkError -> _state.value = UiState.Error("Network issue")
                 is DomainResult.UnknownError -> _state.value = UiState.Error("Unknown error")
