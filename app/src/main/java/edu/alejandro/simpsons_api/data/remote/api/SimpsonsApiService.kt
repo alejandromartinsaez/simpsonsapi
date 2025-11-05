@@ -1,6 +1,5 @@
-package edu.alejandro.simpsons_api.data.remote
+package edu.alejandro.simpsons_api.data.remote.api
 
-import edu.alejandro.simpsons_api.data.model.SimpsonsCharacterDto
 import retrofit2.Response
 import retrofit2.http.GET
 

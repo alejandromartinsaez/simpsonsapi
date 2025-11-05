@@ -1,8 +1,8 @@
-package edu.alejandro.simpsons_api.data.remote
+package edu.alejandro.core
 
+import edu.alejandro.simpsons_api.data.remote.api.SimpsonsApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 object RetrofitClient {
     private const val BASE_URL = "https://thesimpsonsapi.com/api/"
