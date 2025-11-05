@@ -7,6 +7,6 @@ interface SimpsonsApiService {
     @GET
     suspend fun getCharacters(): Response<List<SimpsonsCharacterDto>>
 
-    @GET
-    suspend fun getCharacterById(): Response<SimpsonsCharacterDto>
+    @GET("character/{id}")
+    suspend fun getCharacterById(@retrofit2.http.Path("id") id: Int): Response<SimpsonsCharacterDto>
 }
