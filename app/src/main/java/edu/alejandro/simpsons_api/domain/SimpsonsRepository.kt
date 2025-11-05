@@ -1,6 +1,6 @@
-package edu.alejandro.simpsons_api.domain.repository
+package edu.alejandro.simpsons_api.domain
 
-import edu.alejandro.simpsons_api.domain.model.SimpsonsCharacter
+import edu.alejandro.simpsons_api.domain.SimpsonsCharacter
 
 interface SimpsonsRepository {
     suspend fun getCharacters(): Result<List<SimpsonsCharacter>>

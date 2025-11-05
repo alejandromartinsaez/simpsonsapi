@@ -1,4 +1,4 @@
-package edu.alejandro.simpsons_api.data.model
+package edu.alejandro.simpsons_api.data.remote.api
 
 data class SimpsonsCharacterDto(
     val id: Int,

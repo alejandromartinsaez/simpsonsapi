@@ -1,4 +1,4 @@
-package edu.alejandro.simpsons_api.domain.model
+package edu.alejandro.simpsons_api.domain
 
 data class SimpsonsCharacter(
     val id: Int,

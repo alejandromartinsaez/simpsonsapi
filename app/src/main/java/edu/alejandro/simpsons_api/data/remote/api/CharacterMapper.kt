@@ -1,7 +1,6 @@
-package edu.alejandro.simpsons_api.data.mapper
+package edu.alejandro.simpsons_api.data.remote.api
 
-import edu.alejandro.simpsons_api.data.model.SimpsonsCharacterDto
-import edu.alejandro.simpsons_api.domain.model.SimpsonsCharacter
+import edu.alejandro.simpsons_api.domain.SimpsonsCharacter
 
 class CharacterMapper {
     fun SimpsonsCharacterDto.toDomain() = SimpsonsCharacter(
