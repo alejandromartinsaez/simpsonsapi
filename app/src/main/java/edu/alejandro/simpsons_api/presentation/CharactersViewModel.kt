@@ -1,30 +1,48 @@
-// File: `CharactersViewModel.kt`
 package edu.alejandro.simpsons_api.presentation
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import edu.alejandro.simpsons_api.util.Result as DomainResult
+import edu.alejandro.core.ErrorApp
 import edu.alejandro.simpsons_api.domain.GetCharactersUseCase
+import edu.alejandro.simpsons_api.domain.SimpsonsCharacter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class CharactersViewModel(
-    private val getCharactersUseCase: GetCharactersUseCase,
-    private val getCharactersByIdUseCase: GetCharactersByIdUseCase
+    private val getCharactersUseCase: GetCharactersUseCase
 ) : ViewModel() {
-    private val _state = MutableStateFlow<UiState>(UiState.Idle)
-    val state: StateFlow<UiState> = _state
 
-    fun loadCharacters(page: Int = 1) {
+    data class UiState(
+        val isLoading: Boolean = true,
+        val error: ErrorApp? = null,
+        val success: Boolean? = null,
+        val characters: List<SimpsonsCharacter> = emptyList()
+    )
+
+    private val _uiState = MutableLiveData<UiState>()
+    val uiState: LiveData<UiState> = _uiState
+
+    fun getAll() {
         viewModelScope.launch {
-            _state.value = UiState.Loading
-            when (val result = getCharactersUseCase(page)) {
-                is DomainResult.Success<*> -> _state.value = UiState.Success(result.data as List<*>)
-                is DomainResult.ApiError -> _state.value = UiState.Error("Error ${result.code}")
-                is DomainResult.NetworkError -> _state.value = UiState.Error("Network issue")
-                is DomainResult.UnknownError -> _state.value = UiState.Error("Unknown error")
+            _uiState.value = UiState(isLoading = true)
+            val result = getCharactersUseCase.invoke()
+
+            _uiState.value = when {
+                result.isSuccess -> UiState(
+                    isLoading = false,
+                    success = true,
+                    characters = result.getOrDefault(emptyList())
+                )
+                else -> UiState(
+                    isLoading = false,
+                    error = result.exceptionOrNull() as? ErrorApp,
+                    success = false
+                )
             }
         }
     }
 }
+// view holder, adapter, fragment, interfaz

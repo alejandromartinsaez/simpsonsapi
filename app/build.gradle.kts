@@ -69,6 +69,5 @@ dependencies {
 // Lifecycle / ViewModel (opcional)
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 // Testing (optional)
-    testImplementation("junit:junit:4.13.2")
     testImplementation("com.squareup.okhttp3:mockwebserver:4.11.0")
 }
