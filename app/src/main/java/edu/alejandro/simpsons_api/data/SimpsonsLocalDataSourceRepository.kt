@@ -1,6 +1,5 @@
 package edu.alejandro.simpsons_api.data
 
-import edu.alejandro.core.ApiClient
 import edu.alejandro.simpsons_api.data.remote.api.SimpsonsApiRemoteDataSource
 import edu.alejandro.simpsons_api.data.remote.api.SimpsonsApiService
 import edu.alejandro.simpsons_api.domain.SimpsonsCharacter

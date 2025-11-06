@@ -4,7 +4,6 @@ package edu.alejandro.simpsons_api.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import edu.alejandro.simpsons_api.util.Result as DomainResult
-import edu.alejandro.simpsons_api.domain.GetCharactersByIdUseCase
 import edu.alejandro.simpsons_api.domain.GetCharactersUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
