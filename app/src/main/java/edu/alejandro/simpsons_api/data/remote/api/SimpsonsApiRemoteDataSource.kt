@@ -1,13 +1,13 @@
 package edu.alejandro.simpsons_api.data.remote.api
-
 import edu.alejandro.simpsons_api.domain.SimpsonsCharacter
 
-class SimpsonsApiRemoteDataSource {
-    suspend fun getCharacters(): Result<List<SimpsonsCharacter>> {
-        TODO("Not yet implemented")
-    }
-
-    suspend fun getCharacterById(id: Int): Result<SimpsonsCharacter> {
-        TODO("Not yet implemented")
+class SimpsonsApiRemoteDataSource (private val apiService: SimpsonsApiService) {
+    suspend fun getCharacters(): Result<Result<List<SimpsonsCharacterDto>>> {
+        return try {
+            val characters = apiService.getCharacters()
+            Result.success(characters)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
     }
 }

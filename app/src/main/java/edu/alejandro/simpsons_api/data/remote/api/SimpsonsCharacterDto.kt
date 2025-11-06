@@ -1,13 +1,20 @@
 package edu.alejandro.simpsons_api.data.remote.api
 
+import com.google.gson.annotations.SerializedName
+
 data class SimpsonsCharacterDto(
+    @SerializedName("id")
     val id: Int,
-    val age: Int,
-    val birthDate: String,
-    val gender: String,
+    @SerializedName("name")
     val name: String,
+    @SerializedName("age")
+    val age: Int,
+    @SerializedName("occupation")
     val occupation: String,
+    @SerializedName("status")
+    val status: String,
+    @SerializedName("portrait")
     val portrait: String,
-    val phrases: List<String>,
-    val status: String
+    @SerializedName("phrases")
+    val phrases: List<String>
 )
